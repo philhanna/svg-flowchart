@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE flowchart SYSTEM "flowchart.dtd">
+<flowchart>
+
+   <row>
+      <block type="connector">
+         <text>1</text>
+      </block>
+   </row>
+
+   <row>
+      <block type="decision">
+         <text>Shutdown</text>
+         <text>command?</text>
+         <arrow direction="right" label="Yes"/>
+         <arrow direction="down" label="No"/>
+      </block>
+      <block type="terminal">
+         <text>Stop</text>
+      </block>
+   </row>
+
+   <row>
+      <block type="process">
+         <text>Check for</text>
+         <text>remaining time in</text>
+         <text>batch window</text>
+         <arrow direction="down"/>
+      </block>
+   </row>
+
+   <row>
+      <block type="decision">
+         <text>Any time left?</text>
+         <arrow direction="right" label="No"/>
+         <arrow direction="down" label="Yes"/>
+      </block>
+      <block type="offlineprocess">
+         <text>Sleep for a</text>
+         <text>while</text>
+         <arrow direction="right"/>
+      </block>
+      <block type="connector">
+         <text>1</text>
+      </block>
+   </row>
+
+   <row>
+      <block type="process">
+         <text>Check WIP</text>
+         <text>directory for a file</text>
+         <text>batch window</text>
+         <arrow direction="down"/>
+      </block>
+   </row>
+
+   <row>
+      <block type="decision">
+         <text>WIP file exists?</text>
+         <arrow direction="right" label="No"/>
+         <arrow direction="down" label="Yes"/>
+      </block>
+      <block type="process">
+         <text>Check drop zone</text>
+         <text>for existence of</text>
+         <text>files</text>
+         <arrow direction="right"/>
+      </block>
+      <block type="decision">
+         <text>File exists?</text>
+         <arrow direction="right" label="No"/>
+         <arrow direction="down" label="Yes"/>
+      </block>
+      <block type="offlineprocess">
+         <text>Sleep for a</text>
+         <text>while</text>
+         <arrow direction="right"/>
+      </block>
+      <block type="connector">
+         <text>1</text>
+      </block>
+   </row>
+
+   <row>
+      <block type="process" index="2">
+         <text>Save cursor</text>
+         <text>position = zero</text>
+         <arrow direction="left"/>
+      </block>
+      <block type="process">
+         <text>Move first</text>
+         <text>available file to</text>
+         <text>WIP directory</text>
+         <arrow direction="left"/>
+      </block>
+   </row>
+
+   <row>
+      <block type="process">
+         <text>Open file in WIP</text>
+         <text>directory</text>
+         <arrow direction="down"/>
+      </block>
+   </row>
+
+   <row>
+      <block type="process">
+         <text>Restore cursor</text>
+         <text>position from</text>
+         <text>saved value</text>
+         <arrow direction="down"/>
+      </block>
+   </row>
+
+   <row>
+      <block type="connector">
+         <text>2</text>
+      </block>
+   </row>
+
+</flowchart>

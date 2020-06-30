@@ -1,0 +1,340 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   viewBox="0 0 640 900"
+   version="1.1">
+   <rect width="100%" height="100%" fill="white"/>
+   <defs>
+      <style><![CDATA[
+.line {
+   stroke: #4677bf;
+   fill: none;
+   marker-end: url(#arrow);
+}
+.label {
+   font-family: sans-serif;
+   font-size: 8pt;
+}
+#arrow {
+   stroke: #4677bf;
+   fill: #4677bf;
+}
+#process, #offlineprocess, #terminal, #connector, #decision, #inputoutput {
+   fill: #e8eef7;
+   stroke: #000000;
+}
+      ]]></style>
+
+   <!-- Flowcharting block definitions -->
+
+      <g id="process">
+         <rect width="100" height="60" stroke-width="1"/>
+      </g>
+
+      <g id="offlineprocess">
+         <rect width="100" height="60" stroke-width="1"/>
+         <path d="M 12 0 V 60 M 88 0 V 60"/>
+      </g>
+
+      <g id="terminal">
+         <rect id="terminal"
+               x="0"
+               y="10"
+               width="100"
+               height="40"
+               rx="20"
+               ry="20"
+               />
+      </g>
+
+      <g id="decision">
+         <path d="M 50 0 L 100 30 L 50 60 L 0 30 z"/>
+      </g>
+
+      <g id="connector">
+         <circle cx="50" cy="30" r="20"/>
+      </g>
+
+      <g id="inputoutput">
+         <path d="M 12 0 L 112 0 L 88 60 L -12 60 z"/>
+      </g>
+
+      <marker id="arrow" markerWidth="16" markerHeight="8"
+              refX="0" refY="4" orient="auto"
+              markerUnits="stroke-width">
+         <path d="M 0 0 8 4 0 8z"/>
+      </marker>
+
+      <!-- End of flowcharting block definitions -->
+
+   </defs>
+
+   <!-- Row 1 -->
+
+   <g id="row1" transform="translate(60,0)">
+      <g transform="translate(0,20)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">2</text>
+         <path class="line" d="M 50 50 v 20"/>
+      </g>
+   </g>
+
+   <!-- Row 2 -->
+
+   <g id="row2" transform="translate(60,100)">
+      <use xlink:href="#process"/>
+      <text class="label">
+         <tspan x="8" y="32">Open OSE socket</tspan>
+      </text>
+      <path class="line" d="M 50 60 v 30"/>
+   </g>
+
+   <!-- Row 3 -->
+   
+   <g id="row3" transform="translate(60,200)">
+
+      <g>
+         <use xlink:href="#decision"/>
+         <text class="label">
+            <tspan x="22" y="25">Connection</tspan>
+            <tspan x="23" y="40">accepted?</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+         <text class="label" x="110" y="20">No</text>
+         <path class="line" d="M 50 60 v 80"/>
+         <text class="label" x="20" y="75">Yes</text>
+      </g>
+
+      <g transform="translate(110,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">1</text>
+      </g>
+   </g>
+
+   <!-- Row 3.5 -->
+
+   <g id="row3_5" transform="translate(60,250)">
+      <g transform="translate(-70,20)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">3</text>
+         <path class="line" d="M 70 30 h 40"/>
+      </g>
+   </g>
+
+   <!-- Row 4 -->
+
+   <g id="row4" transform="translate(60,350)">
+
+      <g transform="translate(0,0)">
+         <use xlink:href="#inputoutput"/>
+         <text class="label">
+            <tspan x="37" y="25">Read</tspan>
+            <tspan x="22" y="40">transaction</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 50"/>
+         <text class="label" x="120" y="21">EOF</text>
+         <path class="line" d="M 50 60 v 30"/>
+      </g>
+
+      <g transform="translate(160,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="17" y="25">Close file and</tspan>
+            <tspan x="22" y="40">OSE socket</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(300,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="14" y="18">Delete file and</tspan>
+            <tspan x="20" y="33">saved cursor</tspan>
+            <tspan x="30" y="48">position</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(410,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">1</text>
+      </g>
+
+   </g>
+
+   <!-- Row 5 -->
+
+   <g id="row5" transform="translate(60,450)">
+
+      <g transform="translate(0,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="7" y="25">Write transaction</tspan>
+            <tspan x="15" y="40">to OSE socket</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 50"/>
+         <text class="label" x="108" y="21">Timeout</text>
+         <path class="line" d="M 50 60 v 30"/>
+      </g>
+
+      <g transform="translate(160,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="17" y="25">Close file and</tspan>
+            <tspan x="22" y="40">OSE socket</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(300,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="12" y="18">Decrement and</tspan>
+            <tspan x="20" y="33">save cursor</tspan>
+            <tspan x="30" y="48">position</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(410,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">1</text>
+      </g>
+   </g>
+
+   <!-- Row 6 -->
+
+   <g id="row6" transform="translate(60,550)">
+
+      <g transform="translate(0,0)">
+         <use xlink:href="#decision"/>
+         <text class="label">
+            <tspan x="29" y="25">Window</tspan>
+            <tspan x="28" y="40">expired?</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 50"/>
+         <text class="label" x="114" y="21">Yes</text>
+         <path class="line" d="M 50 60 v 30"/>
+         <text class="label" x="22" y="75">No</text>
+      </g>
+
+      <g transform="translate(160,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="17" y="25">Close file and</tspan>
+            <tspan x="22" y="40">OSE socket</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(300,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="20" y="25">Save cursor</tspan>
+            <tspan x="30" y="40">position</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(410,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">1</text>
+      </g>
+   </g>
+
+   <!-- Row 7 -->
+
+   <g id="row7" transform="translate(60,650)">
+
+      <g transform="translate(0,0)">
+         <use xlink:href="#decision"/>
+         <text class="label">
+            <tspan x="25" y="25">Shutdown</tspan>
+            <tspan x="22" y="40">command?</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 50"/>
+         <text class="label" x="114" y="21">Yes</text>
+         <path class="line" d="M 50 60 v 30"/>
+         <text class="label" x="22" y="75">No</text>
+      </g>
+
+      <g transform="translate(160,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="17" y="25">Close file and</tspan>
+            <tspan x="22" y="40">OSE socket</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(300,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="20" y="25">Save cursor</tspan>
+            <tspan x="30" y="40">position</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+      </g>
+
+      <g transform="translate(440,0)">
+         <use xlink:href="#terminal"/>
+         <text x="37" y="34" class="label">Stop</text>
+      </g>
+   </g>
+
+   <!-- Row 8 -->
+
+   <g id="row8" transform="translate(60,750)">
+
+      <g transform="translate(0,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="7" y="18">Test </tspan>
+            <tspan font-style="italic">record count</tspan>
+            <tspan x="11" y="33" font-weight="bold">mod</tspan>
+            <tspan font-style="italic"> checkpoint</tspan>
+            <tspan x="22" y="48" font-style="italic">interval</tspan>
+            <tspan>= 0</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 50"/>
+      </g>
+
+      <g transform="translate(160,0)">
+         <use xlink:href="#decision"/>
+         <text class="label">
+            <tspan x="30" y="25">Interval</tspan>
+            <tspan x="27" y="40">reached?</tspan>
+         </text>
+         <path class="line" d="M 100 30 h 30"/>
+         <text class="label" x="104" y="21">Yes</text>
+         <path class="line" d="M 50 60 v 20"/>
+         <text class="label" x="22" y="75">No</text>
+      </g>
+
+      <g transform="translate(300,0)">
+         <use xlink:href="#process"/>
+         <text class="label">
+            <tspan x="20" y="25">Save cursor</tspan>
+            <tspan x="30" y="40">position</tspan>
+         </text>
+         <path class="line" d="M 50 60 v 20"/>
+      </g>
+   </g>
+
+   <!-- Row 9 -->
+
+   <g id="row9" transform="translate(60,830)">
+      <g transform="translate(160,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">3</text>
+      </g>
+      <g transform="translate(300,0)">
+         <use xlink:href="#connector"/>
+         <text x="47" y="34" class="label">3</text>
+      </g>
+   </g>
+
+</svg>

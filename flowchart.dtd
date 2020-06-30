@@ -1,0 +1,13 @@
+<!ELEMENT flowchart (row*)>
+<!ELEMENT row (block*)>
+<!ELEMENT block (text | arrow)*>
+<!ATTLIST block
+   type   CDATA   #REQUIRED
+   index  CDATA   #IMPLIED
+   >
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT arrow (EMPTY)>
+<!ATTLIST arrow
+   direction   CDATA    #REQUIRED
+   label       CDATA    #IMPLIED
+   >

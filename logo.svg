@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 400 64"
+   version="1.1"
+   width="100%"
+   height="100%"
+   >
+   <defs>
+      <rect id="staffline" x="0" y="0" width="113" height="2" fill="#000000"/>
+      <g id="halfclef">
+         <ellipse cx="12" cy="11" rx="12" ry="11" fill="black"/>
+         <ellipse cx="12" cy="11" rx="7"  ry="10" fill="white"/>
+         <rect width="6" height="24" fill="white"/>
+         <circle cx="7" cy="6" r="3.5"/>
+         <polygon points="0 24 6 20 6 24" fill="black"/>
+      </g>
+   </defs>
+
+   <!-- Draw the white background -->
+   <rect x="0" y="0" width="400" height="64" fill="white"/>
+
+   <!-- Draw the golden box -->
+   <rect x="0" y="0" width="64" height="64" fill="#FFCE31"/>
+
+   <!-- Draw the white inner box -->
+   <rect x="13" y="9" width="43" height="46" fill="white"/>
+
+   <!-- Draw the alto clef -->
+   <g transform="translate(18,8)">
+      <use href="#halfclef"/>
+      <use href="#halfclef" transform="translate(0,48) scale(1,-1)"/>
+   </g>
+
+   <!-- Draw the staff lines -->
+   <g transform="translate(7,7)">
+      <rect x="0" y="0" width="6" height="50" fill="black"/>
+      <use href="#staffline"/>
+      <use href="#staffline" y="12"/>
+      <use href="#staffline" y="24"/>
+      <use href="#staffline" y="36"/>
+      <use href="#staffline" y="48"/>
+      <rect x="10" y="0" width="3" height="50" fill="black"/>
+   </g>
+
+   <!-- Draw the text -->
+   <text x="140" y="40" style="
+      font-family: Century Schoolbook L;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 28;
+   ">The Lyric Note</text>
+</svg>
